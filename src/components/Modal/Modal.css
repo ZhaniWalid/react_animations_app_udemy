@@ -1,0 +1,81 @@
+.Modal {
+    position: fixed;
+    z-index: 200;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 2px #ccc;
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box;
+    top: 30%;
+    left: 25%;
+    width: 50%;
+    transition: all 0.3s ease-out;
+}
+
+.ModalOpen {
+    /* When this CSS 'ModalOpen' class is used we call '@keyframes openModal' animations */
+    animation: openModal 0.4s ease-out forwards;
+}
+
+.ModalClosed {
+    /* When this CSS 'ModalClosed' class is used we call '@keyframes closeModal' animations */
+    animation: closeModal 1s ease-out forwards; /* 1s => related to timeout={animationTiming.enter} (=1000ms=1s) on <CSSTransition /> on [Modal.js] file */
+}
+
+/* Class for 'initialization', we can put for example => 'opacity: 0' */
+.fade-slide-enter {
+
+}
+
+/* Class when we play the animation action (when it's running) */
+.fade-slide-enter-active {
+    /* When this CSS 'fade-slide-enter-active' class is used we call '@keyframes openModal' animations */
+    animation: openModal 0.4s ease-out forwards; /* 0.4s => related to timeout={animationTiming.enter} (=400ms=0.4s) on <CSSTransition /> on [Modal.js] file */
+}
+
+/* Class for 'initialization', we can put for example => 'opacity: 0' */
+.fade-slide-exit {
+
+}
+
+/* Class when we play the animation action (when it's running) */
+.fade-slide-exit-active {
+    /* When this CSS 'fade-slide-exit-active' class is used we call '@keyframes openModal' animations */
+    animation: closeModal 1s ease-out forwards;
+}
+
+/* With '@keyframes' => You can define the steps of animations with '%' or 'from...to' */
+@keyframes openModal {
+    /* When Open the Modal => we start at 'opacity = 0' & 'We transform this to be moved up to the top' */
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    /* When Open the Modal => we changed at 'opacity = 1' (fully visible) & 'We move it 90% to the bottom (not final position)' */
+    50% {
+        opacity: 1;
+        transform: translateY(90%);
+    }
+    /* When Open the Modal => we changed at 'opacity = 0' & 'We moved to final desintation (position)' */
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* With '@keyframes' => You can define the steps of animations with '%' or 'from...to' */
+@keyframes closeModal {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateY(60%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
